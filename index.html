@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaustub's Portfolio</title>
+    <link href="port.css" rel="stylesheet">
+    <script src="port.js"></script>
+    <script src="https://kit.fontawesome.com/cb6188d335.js" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "iRbKalkWsFipEXeBy",
+      });
+   })();
+</script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav class="nav-links" id="navbar">
+                <a href="#header">
+                <img src="logo.png" width="50%" height="50%" class="logo" id="logo" ></a>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="Resume.pdf" target="_blank" class="btn1">Resume</a></li>
+                </ul>
+            </nav>
+            <div class="header-text" >
+                <h4>Aspiring Software Engineer </h4>
+                <h1>Hi,I am <span>Kaustub</span><br>Chandra Mocherla From India</h1>
+                <p>Computer Science student with a passion for building and securing real world tech solutions.<br>
+                    Skilled in Python and interested in cybersecurity and software development.</p>
+                <a href="https://www.linkedin.com/in/kaustub-mocherla/" target="_blank"><span>L</span>inkedin</a>
+                <a href="https://github.com/Kaustub-Mocherla" target="_blank"><span>G</span>ithub</a>
+            </div>
+        </div>
+    </div>
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-1">
+                    <h1>About Me</h1>
+                    <p>Hi, I'm Mocherla Chandra Kaustub  a Computer Science graduate and aspiring Software
+                        Engineer.<br>
+                        I'm a Computer Science student with a strong foundation in Python, Java, C, and web technologies like HTML5, CSS, AngularJS, and MySQL.<br>
+                        I've developed projects ranging from AI-powered web applications to IoT systems.<br>
+                        My work blends software engineering with interests in network security, ethical hacking, and secure web development.<br>
+                        Passionate about solving real-world problems, I aim to make digital systems more secure, efficient, and reliable.<br>
+                        I'm eager to learn, grow, and contribute to impactful tech teams.<br>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Languages</span><br>Python , Java , C</li>
+                            <li><span>Web-Technologies</span><br>HTML5 , JavaScript , CSS , Bootstrap , AngularJS</li>
+                            <li><span>Databases</span><br>MySQL</li>
+                            <li><span>Tools</span><br>Git & Github</li>
+                            <li><span>Soft Skills</span><br>Leadership , Communication , Time Management , TeamWork</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>Aug 2023 - Present</span><br>Btech in CSE at ICFAI Foundation For Higher Education
+                            </li>
+                            <li><span>March 2021 - 2023</span><br>Intermediate from FIITJEE Junior College</li>
+                            <li><span>June 2020 - 2021</span><br>10<sup>th</sup> from Delhi Public School</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="projects">
+        <div class="container">
+            <h1 class="sub-title">My Projects</h1>
+            <div class="projects-list">
+                <div>
+                    <h2><i class="fa-solid fa-database"></i><spam>  </spam>Community Skill Sharing & Workshop Management Database</h2>                    <p>
+                        Designed a 6-table relational database to manage users, roles, and community-driven events,
+                        applying 3NF to improve performance and data integrity.<br>
+                        The schema allows user-to-skill mapping across 20+ categories, supporting both teaching and
+                        learning preferences to enable personalized discovery and seamless participation in skills
+                        exchange.
+                        <a href="http://127.0.0.1:5000" target="_blank"><i>Learn more</i><span>  </span><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </p>
+
+                </div>
+                <div>
+                    <h2><i class="fa-solid fa-globe"></i><spam>  </spam>AI Powered Smart Waste Management System</h2>
+                    <p>
+                        Built an AI-powered web app that classifies waste types using the Google Vision API and
+                        recommends nearby disposal centers through the Maps API to improve disposal accuracy.<br>
+                        Integrated real-time bin tracking and route optimization for municipal trucks using AI logic and
+                        GPS data, reducing fuel usage and enhancing overall waste collection efficiency.<br>
+
+                        <a href="https://github.com/Kaustub-Mocherla"target="_blank"><i>Learn more</i><span>  </span><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </p>
+
+                    </p>
+                </div>
+                <div>
+                    <h2><i class="fa-solid fa-wifi"></i><spam>  </spam>WiFi-Controlled RC Car</h2>
+                    <p>Developed a WiFi-controlled RC car with 40% reduced latency, enabling real-time mobile-based
+                        speed and direction control using PWM and H-bridge motor drivers.<br>
+                        Engineered a power-efficient system that extended runtime by 25% and integrated fail-safe
+                        protocols.<br>
+                        Maintained 95% command accuracy during network interruptions to ensure reliable operation.<br>
+
+                        <a href="https://github.com/Kaustub-Mocherla" target="_blank"><i>Learn more</i><span>  </span><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p>mocherla.kaustub@gmail.com</p>
+                    <p>8688461879</p>
+                    <a href="Resume.pdf" target="_blank">My Resume</a>
+                </div>
+                <div class="contact-right">
+                    <form>
+                        <input type="text" placeholder="Your Name" id="name" required>
+                        <input type="text" placeholder="Phone Number" id="ph_num" required>
+                        <input type="email" placeholder="Email ID" id="email_id" required>
+                        <textarea placeholder="Your Message" id="msg" rows="6" required></textarea>
+                        <button class="btn" type="submit" onclick="sendMail()">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p> Copywrite &copy; Mocherla Chandra Kaustub. All Rights Reserved 
+        </p>
+    </footer>
+</body>
+
+</html>
