@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kaustub's Portfolio</title>
     <link href="port.css" rel="stylesheet">
-    <script src="port.js"></script>
     <script src="https://kit.fontawesome.com/cb6188d335.js" crossorigin="anonymous"></script>
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
@@ -20,16 +19,60 @@
 </script>
 </head>
 <body>
+    <!-- VFX Canvas -->
+    <canvas id="fx"></canvas>
+    
+    <!-- Page Loading Spinner -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader"></div>
+        <p>Loading Portfolio...</p>
+    </div>
+
+    <!-- ARES AI Assistant -->
+<button id="ares-launcher" class="ares-launcher-btn" aria-label="ARES Assistant">
+  <svg width="800px" height="800px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M395.13 313l89.869-100.857H388.08c-45.748 0-82.824-37.063-82.824-82.824l-.297-33.208-100.857-77.147v96.917c0 45.751-37.06 82.824-82.822 82.824l-9.844.298L27.001 299.86h96.92c45.75 0 82.822 37.062 82.822 82.824l.298 20.484 100.854 89.868v-96.913c0-45.749 37.062-82.823 82.824-82.823zM256 306.669c-27.99 0-50.666-22.685-50.666-50.665 0-27.99 22.679-50.671 50.665-50.671 27.99 0 50.67 22.682 50.67 50.671 0 27.98-22.683 50.665-50.67 50.665z"/></svg>
+</button>
+
+<div id="ares-panel" class="hidden">
+  <div class="ares-header">
+    <span>A.R.E.S</span>
+    <button id="ares-close-btn" onclick="toggleARES()" class="close-btn">×</button>
+  </div>
+
+  <div id="ares-controls">
+    <button onclick="skipTour()">Skip Tour</button>
+    <button onclick="restartTour()">Restart Tour</button>
+    <button onclick="toggleMode()">Mode: Recruiter</button>
+    <button onclick="toggleVoice()">Voice: ON</button>
+  </div>
+
+  <div id="ares-loader" class="ares-loader hidden">
+    <div class="loader"></div>
+  </div>
+
+  <div id="ares-log"></div>
+
+  <input
+    id="ares-input"
+    placeholder="Type: about | skills | projects | resume | contact"
+  />
+</div>
+
     <div id="header">
         <div class="container">
             <nav class="nav-links" id="navbar">
                 <a href="#header">
                 <img src="logo.png" width="50%" height="50%" class="logo" id="logo" ></a>
-                <ul>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="nav-menu">
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="Resume.pdf" target="_blank" class="btn1">Resume</a></li>
+                    <li><a href="Resume.pdf" target="_blank" class="button-30">Resume</a></li>
                 </ul>
             </nav>
             <div class="header-text" >
@@ -145,6 +188,7 @@
         <p> Copywrite &copy; Mocherla Chandra Kaustub. All Rights Reserved 
         </p>
     </footer>
+    <script src="port.js"></script>
 </body>
 
 </html>
