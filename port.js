@@ -18,6 +18,79 @@ if (hamburger) {
     });
 }
 
+/* Typing Animation */
+function typeText() {
+    const text = "Kaustub";
+    const element = document.getElementById('typing-text');
+    element.textContent = '';
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            element.textContent += text[index];
+            index++;
+            setTimeout(type, 100);
+        }
+    }
+
+    type();
+}
+
+/* Typewriter Animation */
+function typewriterAnimation() {
+    const texts = [
+        "Aspiring Software Developer",
+        "Learning by building real-world projects",
+        "Focused on clean, scalable code"
+    ];
+    
+    const element = document.getElementById('rotating-text');
+    let currentIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    const typingSpeed = 80;      // ms per character
+    const deletingSpeed = 50;    // ms per character (faster)
+    const pauseTime = 1500;      // ms pause after full text
+
+    function type() {
+        const currentText = texts[currentIndex];
+
+        if (!isDeleting && charIndex < currentText.length) {
+            // Typing
+            charIndex++;
+            element.textContent = currentText.substring(0, charIndex);
+            setTimeout(type, typingSpeed);
+        } else if (!isDeleting && charIndex === currentText.length) {
+            // Pause after typing
+            setTimeout(() => {
+                isDeleting = true;
+                type();
+            }, pauseTime);
+        } else if (isDeleting && charIndex > 0) {
+            // Deleting
+            charIndex--;
+            element.textContent = currentText.substring(0, charIndex);
+            setTimeout(type, deletingSpeed);
+        } else if (isDeleting && charIndex === 0) {
+            // Move to next sentence
+            isDeleting = false;
+            currentIndex = (currentIndex + 1) % texts.length;
+            setTimeout(type, 500); // Small delay before typing next sentence
+        }
+    }
+
+    type();
+}
+
+// Start typewriter animation when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    typewriterAnimation();
+    typeText();
+    rotateText();
+});
+
+
 var tablinks = document.getElementsByClassName("tab-links");
 var tabcontents = document.getElementsByClassName("tab-contents");
 
