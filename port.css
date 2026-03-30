@@ -70,9 +70,11 @@ nav {
 
 .logo {
     width: 140px;
+    height: auto; /* Maintains aspect ratio */
     border-radius: 10px;
     cursor: pointer;
     margin-left: 15px;
+    object-fit: contain; /* Ensures proper scaling */
 }
 
 nav ul li a {
@@ -773,8 +775,8 @@ footer {
   }
 
   .logo {
-    width: 100px;
-    margin-left: 0;
+    width: 100px; /* Smaller logo on mobile */
+    margin-left: 10px;
   }
 
   #header {
