@@ -1,194 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaustub's Portfolio</title>
-    <link href="port.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/cb6188d335.js" crossorigin="anonymous"></script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "iRbKalkWsFipEXeBy",
-      });
-   })();
-</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mocherla Chandra Kaustub — AI and Backend Software Engineer portfolio." />
+  <title>Mocherla Chandra Kaustub | AI & Backend Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- VFX Canvas -->
-    <canvas id="fx"></canvas>
-    
-    <!-- Page Loading Spinner -->
-    <div id="page-loader" class="page-loader">
-        <div class="loader"></div>
-        <p>Loading Portfolio...</p>
-    </div>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Home"><span class="brand-mark">KM</span><span class="brand-text">Kaustub</span></a>
+      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+      <nav class="nav">
+        <a href="#work">Work</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+        <a class="nav-resume" href="Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </nav>
+    </header>
 
-    <!-- ARES AI Assistant -->
-<button id="ares-launcher" class="ares-launcher-btn" aria-label="ARES Assistant">
-  <svg width="800px" height="800px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M395.13 313l89.869-100.857H388.08c-45.748 0-82.824-37.063-82.824-82.824l-.297-33.208-100.857-77.147v96.917c0 45.751-37.06 82.824-82.822 82.824l-9.844.298L27.001 299.86h96.92c45.75 0 82.822 37.062 82.822 82.824l.298 20.484 100.854 89.868v-96.913c0-45.749 37.062-82.823 82.824-82.823zM256 306.669c-27.99 0-50.666-22.685-50.666-50.665 0-27.99 22.679-50.671 50.665-50.671 27.99 0 50.67 22.682 50.67 50.671 0 27.98-22.683 50.665-50.67 50.665z"/></svg>
-</button>
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-eyebrow"><span class="status-dot"></span>4th Year CSE · Backend · AI Systems</div>
+        <h1>Building AI-powered backend systems with clean APIs, agents, and scalable retrieval.</h1>
+        <p class="hero-copy">I am Mocherla Chandra Kaustub, a Computer Science student focused on Python backend engineering, FastAPI services, RAG systems, AI agents, vector databases, and practical automation platforms.</p>
+        <div class="hero-actions"><a class="button primary" href="#projects">View Projects</a><a class="button secondary" href="mailto:mocherla.kaustub@gmail.com">Contact Me</a></div>
+        <div class="hero-metrics"><div><strong>9.21</strong><span>CGPA</span></div><div><strong>5+</strong><span>Major Projects</span></div><div><strong>2027</strong><span>Graduation</span></div></div>
+      </section>
 
-<div id="ares-panel" class="hidden">
-  <div class="ares-header">
-    <span>A.R.E.S</span>
-    <button id="ares-close-btn" onclick="toggleARES()" class="close-btn">×</button>
+      <section id="work" class="section split-section">
+        <div><p class="section-label">Experience</p><h2>Backend engineering with applied AI workflows.</h2></div>
+        <article class="card experience-card">
+          <div class="card-topline"><span>Python Developer Intern</span><span>June – July 2025</span></div>
+          <h3>Eficens Software Services Private Limited</h3>
+          <ul>
+            <li>Designed FastAPI backend services for document and website analysis workflows.</li>
+            <li>Built RAG pipelines using ChromaDB to support semantic search over unstructured data.</li>
+            <li>Developed CrewAI-based agent workflows for reasoning, query handling, and automation.</li>
+            <li>Implemented JWT authentication with Clerk to secure backend API endpoints.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-heading"><p class="section-label">Selected Projects</p><h2>Project proof for recruiters and engineering teams.</h2><p>Focused on backend services, distributed systems, AI agents, database-backed workflows, and practical automation.</p></div>
+        <div class="project-grid">
+          <article class="project-card featured"><div class="project-meta"><span>Distributed AI</span><span>2025 – 2026</span></div><h3>DKSS — Distributed Knowledge Search System</h3><p>Privacy-preserving federated RAG system with independent FastAPI nodes, ChromaDB vector stores, Ollama inference, and Streamlit monitoring.</p><div class="tag-row"><span>Python</span><span>FastAPI</span><span>ChromaDB</span><span>Ollama</span><span>Streamlit</span></div></article>
+          <article class="project-card featured"><div class="project-meta"><span>AI Agents</span><span>2025</span></div><h3>CrawlMind — Document & Website Analysis Platform</h3><p>AI-powered platform for crawling websites, ingesting documents, semantic indexing, natural language querying, and CrewAI-based reasoning workflows.</p><div class="tag-row"><span>FastAPI</span><span>CrewAI</span><span>RAG</span><span>JWT</span></div><a class="project-link" href="https://github.com/Kaustub-Mocherla/CrawlMind" target="_blank" rel="noopener">View GitHub →</a></article>
+          <article class="project-card"><div class="project-meta"><span>Backend + SQL</span><span>2025</span></div><h3>Game Analytics Platform</h3><p>Backend analytics system for players, matches, achievements, gameplay events, leaderboards, retention, and player statistics over 35,000+ gameplay records.</p><div class="tag-row"><span>FastAPI</span><span>MySQL</span><span>SQL</span><span>REST APIs</span></div></article>
+          <article class="project-card"><div class="project-meta"><span>Automation</span><span>2025</span></div><h3>AI Web Scraper</h3><p>Python-based automation tool that extracts and structures website data using LLM-assisted parsing to reduce manual data collection and preprocessing.</p><div class="tag-row"><span>Python</span><span>Web Scraping</span><span>LLM Parsing</span></div><a class="project-link" href="https://github.com/Kaustub-Mocherla/AI_Webscraper" target="_blank" rel="noopener">View GitHub →</a></article>
+          <article class="project-card"><div class="project-meta"><span>Computer Vision</span><span>2025</span></div><h3>Microplastics Detection</h3><p>Machine learning pipeline to detect and classify microplastics from microscopic images using preprocessing and classification techniques.</p><div class="tag-row"><span>Python</span><span>ML</span><span>Computer Vision</span></div></article>
+          <article class="project-card muted-card"><div class="project-meta"><span>Currently Building</span><span>Next</span></div><h3>AgentOps Evaluation & Monitoring Platform</h3><p>A planned agent reliability platform for tracing tool calls, memory retrieval, evaluation scores, latency, and hallucination risk across AI workflows.</p><div class="tag-row"><span>FastAPI</span><span>Agents</span><span>Evaluation</span><span>Observability</span></div></article>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="section-heading"><p class="section-label">Skills</p><h2>Core technical stack.</h2></div>
+        <div class="skills-grid">
+          <div class="skill-card"><h3>Languages</h3><p>Python, Java, C, C++, SQL, JavaScript</p></div>
+          <div class="skill-card"><h3>Backend</h3><p>FastAPI, REST APIs, JWT Authentication, API Design, Backend Services</p></div>
+          <div class="skill-card"><h3>AI / GenAI</h3><p>RAG Systems, LLM Pipelines, CrewAI, LangChain, Prompt Engineering</p></div>
+          <div class="skill-card"><h3>Databases</h3><p>MySQL, ChromaDB, Vector Databases, Relational Database Design</p></div>
+          <div class="skill-card"><h3>Tools</h3><p>Git, Firebase, Google Cloud APIs, Clerk, Streamlit</p></div>
+          <div class="skill-card"><h3>CS Fundamentals</h3><p>Data Structures, Algorithms, OOP, DBMS, Debugging, Modular Design</p></div>
+        </div>
+      </section>
+
+      <section class="section education-section"><div><p class="section-label">Education</p><h2>ICFAI Foundation for Higher Education</h2><p>B.Tech in Computer Science and Engineering · 4th Year · Hyderabad</p></div><div class="education-score"><span>CGPA</span><strong>9.21</strong></div></section>
+      <section id="contact" class="section contact-section"><p class="section-label">Contact</p><h2>Open to software engineering, AI backend, and agentic AI opportunities.</h2><div class="contact-actions"><a href="mailto:mocherla.kaustub@gmail.com">mocherla.kaustub@gmail.com</a><a href="https://www.linkedin.com/in/kaustub-mocherla/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/Kaustub-Mocherla" target="_blank" rel="noopener">GitHub</a></div></section>
+    </main>
+    <footer class="site-footer"><span>© 2026 Mocherla Chandra Kaustub</span><span>Built with HTML, CSS, and JavaScript</span></footer>
   </div>
-
-  <div id="ares-controls">
-    <button onclick="skipTour()">Skip Tour</button>
-    <button onclick="restartTour()">Restart Tour</button>
-    <button onclick="toggleMode()">Mode: Recruiter</button>
-    <button onclick="toggleVoice()">Voice: ON</button>
-  </div>
-
-  <div id="ares-loader" class="ares-loader hidden">
-    <div class="loader"></div>
-  </div>
-
-  <div id="ares-log"></div>
-
-  <input
-    id="ares-input"
-    placeholder="Type: about | skills | projects | resume | contact"
-  />
-</div>
-
-    <div id="header">
-        <div class="container">
-            <nav class="nav-links" id="navbar">
-                <a href="#header">
-                <img src="logo2.png" width="50%" height="50%" class="logo" id="logo" ></a>
-                <button class="hamburger" id="hamburger" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-menu" id="nav-menu">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="Resume.pdf" target="_blank" class="button-30">Resume</a></li>
-                </ul>
-            </nav>
-            <div class="header-text" >
-                <h4><span id="rotating-text">Aspiring Software Engineer</span></h4>
-                <h1>Hi,I am <span id="typing-text">Kaustub</span><br>Chandra Mocherla From India</h1>
-                <p>Computer Science student with a passion for building and securing real world tech solutions.<br>
-                    Skilled in Python and interested in cybersecurity and software development.</p>
-                <a href="https://www.linkedin.com/in/kaustub-mocherla/" target="_blank"><span>L</span>inkedin</a>
-                <a href="https://github.com/Kaustub-Mocherla" target="_blank"><span>G</span>ithub</a>
-            </div>
-        </div>
-    </div>
-    <div id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-1">
-                    <h1>About Me</h1>
-                    <p>Hello, I’m Mocherla Chandra Kaustub currently pursuing a B.Tech in Computer Science & Engineering and working towards becoming a software engineer.<br>
-                        I'm a Computer Science student with a strong foundation in Python, Java, C, and web technologies like HTML5, CSS, AngularJS, and MySQL.<br>
-                        I've developed projects ranging from AI-powered web applications to IoT systems.<br>
-                        My work blends software engineering with interests in network security, ethical hacking, and secure web development.<br>
-                        Passionate about solving real-world problems, I aim to make digital systems more secure, efficient, and reliable.<br>
-                        I'm eager to learn, grow, and contribute to impactful tech teams.<br>
-                    <div class="tab-titles">
-                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-                        <p class="tab-links" onclick="opentab('education')">Education</p>
-                    </div>
-                    <div class="tab-contents active-tab" id="skills">
-                        <ul>
-                            <li><span>Languages</span><br>Python , Java , C</li>
-                            <li><span>Web-Technologies</span><br>HTML5 , JavaScript , CSS , Bootstrap , AngularJS</li>
-                            <li><span>Databases</span><br>MySQL</li>
-                            <li><span>Tools</span><br>Git & Github</li>
-                            <li><span>Soft Skills</span><br>Leadership , Communication , Time Management , TeamWork</li>
-                        </ul>
-                    </div>
-                    <div class="tab-contents" id="education">
-                        <ul>
-                            <li><span>Aug 2023 - Present</span><br>B.Tech in CSE at ICFAI Foundation For Higher Education
-                            </li>
-                            <li><span>March 2021 - 2023</span><br>Intermediate from FIITJEE Junior College</li>
-                            <li><span>June 2020 - 2021</span><br>10<sup>th</sup> from Delhi Public School</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="projects">
-        <div class="container">
-            <h1 class="sub-title">My Projects</h1>
-            <div class="projects-list">
-                <div>
-                    <h2><i class="fa-solid fa-database"></i><spam>  </spam>Community Skill Sharing & Workshop Management Database</h2>                    <p>
-                        Designed a 6-table relational database to manage users, roles, and community-driven events,
-                        applying 3NF to improve performance and data integrity.<br>
-                        The schema allows user-to-skill mapping across 20+ categories, supporting both teaching and
-                        learning preferences to enable personalized discovery and seamless participation in skills
-                        exchange.
-                        <a href="http://127.0.0.1:5000" target="_blank"><i>Learn more</i><span>  </span><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </p>
-
-                </div>
-                <div>
-                    <h2><i class="fa-solid fa-globe"></i><spam>  </spam>AI Powered Smart Waste Management System</h2>
-                    <p>
-                        Built an AI-powered web app that classifies waste types using the Google Vision API and
-                        recommends nearby disposal centers through the Maps API to improve disposal accuracy.<br>
-                        Integrated real-time bin tracking and route optimization for municipal trucks using AI logic and
-                        GPS data, reducing fuel usage and enhancing overall waste collection efficiency.<br>
-
-                        <a href="https://github.com/Kaustub-Mocherla"target="_blank"><i>Learn more</i><span>  </span><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </p>
-
-                    </p>
-                </div>
-                <div>
-                    <h2><i class="fa-solid fa-wifi"></i><spam>  </spam>WiFi-Controlled RC Car</h2>
-                    <p>Developed a WiFi-controlled RC car with 40% reduced latency, enabling real-time mobile-based
-                        speed and direction control using PWM and H-bridge motor drivers.<br>
-                        Engineered a power-efficient system that extended runtime by 25% and integrated fail-safe
-                        protocols.<br>
-                        Maintained 95% command accuracy during network interruptions to ensure reliable operation.<br>
-
-                        <a href="https://github.com/Kaustub-Mocherla" target="_blank"><i>Learn more</i><span>  </span><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="contact-left">
-                    <h1 class="sub-title">Contact Me</h1>
-                    <p>mocherla.kaustub@gmail.com</p>
-                    <p>8688461879</p>
-                    <a href="Resume.pdf" target="_blank">My Resume</a>
-                </div>
-                <div class="contact-right">
-                    <form>
-                        <input type="text" placeholder="Your Name" id="name" required>
-                        <input type="text" placeholder="Phone Number" id="ph_num" required>
-                        <input type="email" placeholder="Email ID" id="email_id" required>
-                        <textarea placeholder="Your Message" id="msg" rows="6" required></textarea>
-                        <button class="btn" type="submit" onclick="sendMail()">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <p> Copyright &copy; Mocherla Chandra Kaustub. All Rights Reserved.
-        </p>
-    </footer>
-    <script src="port.js"></script>
+  <script src="script.js"></script>
 </body>
-
 </html>
