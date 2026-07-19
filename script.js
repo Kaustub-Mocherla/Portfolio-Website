@@ -1,12 +1,128 @@
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach((el) => io.observe(el));
+
+// Full-page canvas animation representing pipelines/agents
+const canvas = document.getElementById('pageCanvas');
+const ctx = canvas.getContext('2d');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let canvasDebug = true;
+let w, h, nodes = [], packets = [];
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+  canvas.style.height = '100vh';
+}
+
+function initNodes() {
+  const count = w < 680 ? 12 : 22;
+  const lanes = Math.max(3, Math.floor(h / 140));
+  nodes = Array.from({ length: count }, (_, i) => ({
+    x: Math.random() * w,
+    y: (h * (0.12 + ((i % lanes) / lanes))) + (Math.random() * h * 0.08),
+    vx: (0.08 + Math.random() * 0.08),
+    vy: (Math.random() - 0.5) * 0.035,
+    r: Math.random() * 2.2 + 0.9
+  }));
+  packets = [];
+}
+
+function spawnPacket(fromNode) {
+  const target = nodes[Math.floor(Math.random() * nodes.length)];
+  if (!target || target === fromNode) return;
+  const angle = Math.atan2(target.y - fromNode.y, target.x - fromNode.x);
+  const speed = 0.28 + Math.random() * 0.24;
+  packets.push({
+    x: fromNode.x,
+    y: fromNode.y,
+    vx: Math.cos(angle) * speed,
+    vy: Math.sin(angle) * speed,
+    life: 0,
+    ttl: 200 + Math.random() * 200
+  });
+}
+
+function draw() {
+  ctx.clearRect(0, 0, w, h);
+
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j];
+      const dist = Math.hypot(a.x - b.x, a.y - b.y);
+      if (dist < 160) {
+        const base = canvasDebug ? 0.18 : 0.08;
+        const alpha = base * (1 - dist / 160);
+        ctx.strokeStyle = `rgba(228,166,47,${alpha})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  const spawnRate = canvasDebug ? 0.12 : 0.035;
+  if (Math.random() < spawnRate) spawnPacket(nodes[Math.floor(Math.random() * nodes.length)]);
+
+  packets = packets.filter((p) => p.life < p.ttl);
+  packets.forEach((p) => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.life += 1;
+    const baseAlpha = canvasDebug ? 0.28 : 0.14;
+    const a = baseAlpha * (1 - p.life / p.ttl);
+    ctx.fillStyle = `rgba(228,166,47,${a})`;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, canvasDebug ? 3.4 : 2.4, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  nodes.forEach((n) => {
+    n.x += n.vx * (0.6 + 0.8 * Math.sin((n.x + n.y + Date.now() / 6000)));
+    n.y += Math.sin(Date.now() / 2000 + n.x * 0.001) * 0.3 + n.vy;
+    if (n.x > w + 12) n.x = -12;
+    if (n.y < 0) n.y = 0;
+    if (n.y > h) n.y = h;
+    ctx.fillStyle = 'rgba(228,166,47,0.10)';
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  if (!reducedMotion) requestAnimationFrame(draw);
+}
+
+resize();
+initNodes();
+if (!reducedMotion) {
+  requestAnimationFrame(draw);
+} else {
+  draw();
+}
+window.addEventListener('resize', () => {
+  resize();
+  initNodes();
+});
+
 // Mobile nav toggle
 const navToggle = document.querySelector('.nav-toggle');
-const nav = document.querySelector('.nav');
+const nav = document.querySelector('.nav-links');
 if (navToggle && nav) {
   navToggle.addEventListener('click', () => {
     const isOpen = nav.classList.toggle('open');
     navToggle.setAttribute('aria-expanded', String(isOpen));
   });
-  nav.querySelectorAll('a').forEach(link => {
+  nav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       nav.classList.remove('open');
       navToggle.setAttribute('aria-expanded', 'false');
@@ -14,83 +130,16 @@ if (navToggle && nav) {
   });
 }
 
-// Scroll-triggered section reveal
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      if (!reduceMotion) {
-        entry.target.animate(
-          [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'translateY(0)' }],
-          { duration: 520, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' }
-        );
-      } else {
-        entry.target.style.opacity = '1';
-      }
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.section,.project-card,.skill-card').forEach(el => {
-  el.style.opacity = '0';
-  revealObserver.observe(el);
+// Show greeting after load
+document.addEventListener('DOMContentLoaded', () => {
+  const g = document.querySelector('.greeting');
+  if (g) setTimeout(() => g.classList.add('visible'), 120);
+
+  const projGrid = document.querySelector('.proj-grid');
+  if (projGrid && projGrid.parentElement) {
+    const msg = document.createElement('p');
+    msg.className = 'projects-coming mono';
+    msg.textContent = '{ more projects coming soon... }';
+    projGrid.parentElement.appendChild(msg);
+  }
 });
-
-// Scroll progress bar
-const scrollBar = document.getElementById('scrollBar');
-function updateScrollProgress() {
-  const doc = document.documentElement;
-  const scrollable = doc.scrollHeight - doc.clientHeight;
-  const pct = scrollable > 0 ? (doc.scrollTop / scrollable) * 100 : 0;
-  if (scrollBar) scrollBar.style.width = pct + '%';
-}
-document.addEventListener('scroll', updateScrollProgress, { passive: true });
-updateScrollProgress();
-
-// Active nav link highlighting
-const navLinks = document.querySelectorAll('[data-nav-link]');
-const sections = Array.from(navLinks)
-  .map(link => document.querySelector(link.getAttribute('href')))
-  .filter(Boolean);
-const navObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    const id = '#' + entry.target.id;
-    const link = document.querySelector(`[data-nav-link][href="${id}"]`);
-    if (!link) return;
-    if (entry.isIntersecting) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-    }
-  });
-}, { rootMargin: '-45% 0px -45% 0px' });
-sections.forEach(section => navObserver.observe(section));
-
-// Cursor spotlight glow on project cards
-document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
-    card.style.setProperty('--my', `${e.clientY - rect.top}px`);
-  });
-});
-
-// Copy email to clipboard
-const emailLink = document.getElementById('emailLink');
-if (emailLink) {
-  emailLink.addEventListener('click', e => {
-    const email = emailLink.getAttribute('data-copy');
-    if (!email || !navigator.clipboard) return;
-    e.preventDefault();
-    navigator.clipboard.writeText(email).then(() => {
-      const original = emailLink.textContent;
-      emailLink.textContent = 'Copied!';
-      emailLink.classList.add('copied');
-      setTimeout(() => {
-        emailLink.textContent = original;
-        emailLink.classList.remove('copied');
-      }, 1500);
-    }).catch(() => {
-      window.location.href = 'mailto:' + email;
-    });
-  });
-}
